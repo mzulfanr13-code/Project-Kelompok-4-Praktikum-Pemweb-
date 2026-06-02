@@ -1,40 +1,43 @@
 # The Amazing World of Gumball Theme
 
-## 🕯️ Deskripsi Aplikasi
+## 📖 Deskripsi Aplikasi
 
-The Amazing World of Gumball Theme adalah aplikasi web berbasis PHP Native yang bertemakan mitologi, misteri, dan benda pusaka nusantara. Website ini memungkinkan pengguna untuk menjelajahi informasi mengenai karun (harta atau pusaka mistis), gumbal (media ritual), serta melaporkan temuan atau lokasi yang berkaitan dengan legenda tersebut.
+The Amazing World of Gumball Theme adalah website berbasis PHP Native yang berfungsi sebagai platform informasi dan dokumentasi mengenai Gumbal, ritual, artefak mistis, serta laporan masyarakat terkait penemuan atau legenda yang berhubungan dengannya.
 
-Proyek ini dibuat untuk memenuhi tugas Responsi Praktikum Pemrograman Web dengan menerapkan konsep HTML, CSS, JavaScript, PHP Native, Session, CRUD, dan MySQL.
+Website ini dikembangkan sebagai proyek Responsi Praktikum Pemrograman Web dengan menerapkan HTML, CSS, JavaScript, PHP Native, Session, CRUD, dan MySQL.
 
 ---
 
 ## ✨ Fitur Utama
 
-### 👤 Halaman User (Pengguna)
+### 👤 Halaman User
 
-#### 🔐 Sistem Registrasi & Login
+#### 🔐 Registrasi & Login
 
-* Pengguna dapat membuat akun baru.
-* Pengguna dapat login menggunakan akun yang telah dibuat.
+* Membuat akun baru.
+* Login menggunakan akun yang telah terdaftar.
+* Logout dari sistem.
 
 #### 🏠 Dashboard User
 
-* Menampilkan ringkasan informasi.
-* Navigasi menuju seluruh fitur website.
-
-#### 🗺️ Data Karun
-
-* Melihat daftar karun atau pusaka yang tersedia.
-* Melihat detail lokasi dan deskripsi karun.
+* Menampilkan informasi singkat website.
+* Navigasi menuju seluruh fitur utama.
 
 #### 🕯️ Data Gumbal
 
-* Melihat daftar gumbal beserta jenis dan keterangannya.
+* Melihat daftar Gumbal.
+* Melihat detail Gumbal.
+* Mencari Gumbal berdasarkan nama atau kategori.
+
+#### 📜 Ritual & Legenda
+
+* Melihat informasi ritual dan legenda yang berkaitan dengan Gumbal.
+* Menampilkan deskripsi dan sejarah singkat.
 
 #### 📝 Laporan Temuan
 
-* Mengirim laporan terkait penemuan karun atau gumbal.
-* Riwayat laporan yang pernah dikirim.
+* Mengirim laporan terkait Gumbal.
+* Melihat status laporan yang telah dikirim.
 
 ---
 
@@ -42,31 +45,33 @@ Proyek ini dibuat untuk memenuhi tugas Responsi Praktikum Pemrograman Web dengan
 
 #### 📊 Dashboard Admin
 
-* Menampilkan statistik data website.
-* Ringkasan jumlah user, karun, gumbal, dan laporan.
+* Menampilkan statistik website.
+* Jumlah user, data Gumbal, ritual, dan laporan.
 
-#### ⚙️ Manajemen Karun (CRUD)
+#### ⚙️ Manajemen Gumbal
 
-* Menambah data karun.
-* Melihat data karun.
-* Mengubah data karun.
-* Menghapus data karun.
+* Menambah data Gumbal.
+* Mengedit data Gumbal.
+* Menghapus data Gumbal.
+* Melihat seluruh data Gumbal.
 
-#### 🕯️ Manajemen Gumbal
+#### 📜 Manajemen Ritual
 
-* Menambah data gumbal.
-* Mengubah data gumbal.
-* Menghapus data gumbal.
-
-#### 👥 Manajemen User
-
-* Melihat seluruh akun pengguna.
-* Menghapus akun pengguna jika diperlukan.
+* Menambah data ritual.
+* Mengedit data ritual.
+* Menghapus data ritual.
 
 #### 📄 Manajemen Laporan
 
-* Melihat laporan yang dikirim oleh pengguna.
-* Memverifikasi atau menghapus laporan.
+* Melihat laporan pengguna.
+* Menyetujui laporan.
+* Menolak laporan.
+* Menghapus laporan.
+
+#### 👥 Manajemen User
+
+* Melihat daftar pengguna.
+* Menghapus akun pengguna.
 
 ---
 
@@ -77,82 +82,62 @@ root/
 │
 ├── assets/
 │   ├── css/
-│   │   ├── style.css              # Global styles
-│   │   ├── admin.css              # Admin styles
-│   │   └── auth.css               # Login & register styles
+│   │   ├── style.css
+│   │   ├── admin.css
+│   │   └── auth.css
 │   │
 │   ├── js/
-│   │   ├── main.js                # Global JavaScript
-│   │   └── validation.js          # Form validation
+│   │   ├── main.js
+│   │   └── validation.js
 │   │
 │   └── images/
-│       ├── karun/                 # Gambar karun/pusaka
-│       ├── gumbal/                # Gambar gumbal
-│       └── ui/                    # Logo, icon, banner
+│       ├── gumbal/
+│       ├── ritual/
+│       └── ui/
 │
 ├── includes/
-│   ├── config.php                # Database connection
-│   ├── functions.php             # Reusable functions
-│   ├── session.php               # Session & role guard
-│   ├── header.php                # Shared header
-│   └── footer.php                # Shared footer
+│   ├── config.php
+│   ├── functions.php
+│   ├── session.php
+│   ├── header.php
+│   └── footer.php
 │
 ├── pages/
-│   ├── login.php                 # Login page
-│   ├── register.php              # Register page
-│   ├── dashboard.php             # User dashboard
-│   ├── karun.php                 # List karun
-│   ├── karun-detail.php          # Detail karun
-│   ├── gumbal.php                # List gumbal
-│   ├── gumbal-detail.php         # Detail gumbal
-│   ├── laporan.php               # Submit laporan
-│   ├── profile.php               # User profile
-│   └── logout.php                # Logout process
+│   ├── login.php
+│   ├── register.php
+│   ├── dashboard.php
+│   ├── gumbal.php
+│   ├── gumbal-detail.php
+│   ├── ritual.php
+│   ├── ritual-detail.php
+│   ├── laporan.php
+│   ├── profile.php
+│   └── logout.php
 │
 ├── admin/
-│   ├── dashboard.php             # Admin dashboard
-│   ├── manage-karun.php          # CRUD karun
-│   ├── manage-gumbal.php         # CRUD gumbal
-│   ├── manage-laporan.php        # Approve/reject laporan
-│   └── manage-users.php          # User management
+│   ├── dashboard.php
+│   ├── manage-gumbal.php
+│   ├── manage-ritual.php
+│   ├── manage-laporan.php
+│   └── manage-users.php
 │
 ├── database/
-│   ├── schema.sql                # Database structure
-│   └── seed.sql                  # Sample data
+│   ├── schema.sql
+│   └── seed.sql
 │
 ├── uploads/
-│   ├── karun/                    # Uploaded karun images
-│   └── gumbal/                   # Uploaded gumbal images
+│   ├── gumbal/
+│   └── ritual/
 │
-├── index.php                     # Landing page
+├── index.php
 ├── README.md
 ├── .gitignore
-└── config.example.php            # Example configuration
+└── config.example.php
 ```
 
 ---
 
-## 🗄️ Database
-
-### Tabel Users
-
-Menyimpan data akun pengguna.
-
-### Tabel Karun
-
-Menyimpan informasi mengenai karun atau pusaka.
-
-### Tabel Gumbal
-
-Menyimpan informasi mengenai gumbal.
-
-### Tabel Laporan
-
-Menyimpan laporan yang dikirim oleh pengguna.
-
----
-
-## 🔧 Teknologi yang Digunakan
+## 🛠️ Teknologi yang Digunakan
 
 ### UI/UX Design
 
@@ -174,7 +159,48 @@ Menyimpan laporan yang dikirim oleh pengguna.
 
 ### Version Control
 
-* Git & GitHub
+* GitHub
+
+---
+
+## 🗄️ Database
+
+### users
+
+Menyimpan data akun pengguna dan administrator.
+
+### gumbal
+
+Menyimpan informasi mengenai Gumbal.
+
+### ritual
+
+Menyimpan informasi ritual atau legenda.
+
+### laporan
+
+Menyimpan laporan yang dikirim oleh pengguna.
+
+---
+
+## 👥 Role Pengguna
+
+### Admin
+
+* CRUD Gumbal
+* CRUD Ritual
+* Kelola Laporan
+* Kelola User
+* Dashboard Statistik
+
+### User
+
+* Registrasi
+* Login
+* Melihat Data Gumbal
+* Melihat Data Ritual
+* Mengirim Laporan
+* Melihat Profil
 
 ---
 
@@ -183,81 +209,72 @@ Menyimpan laporan yang dikirim oleh pengguna.
 ### 1. Clone Repository
 
 ```bash
-git clone [url-repository]
+git clone https://github.com/username/gumbal-information-system.git
 ```
 
 ### 2. Pindahkan Project
 
-Pindahkan folder proyek ke dalam folder server lokal seperti:
+Salin folder proyek ke dalam folder:
 
 ```text
-htdocs/ (XAMPP)
+htdocs/
 ```
 
 ### 3. Buat Database
 
-Buka phpMyAdmin dan buat database:
-
 ```sql
-karun_gumbal
+CREATE DATABASE gumbal_db;
 ```
 
 ### 4. Import Database
 
-Import file `.sql` yang tersedia pada folder:
+Import file:
 
 ```text
-db/
+database/schema.sql
+```
+
+dan
+
+```text
+database/seed.sql
 ```
 
 ### 5. Konfigurasi Database
 
-Buka file:
-
-```text
-config/conn.php
-```
-
-Sesuaikan konfigurasi:
-
 ```php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "karun_gumbal";
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'gumbal_db');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 ```
 
-### 6. Jalankan Aplikasi
+### 6. Jalankan Website
 
-Buka browser dan akses:
+```bash
+php -S localhost:8000
+```
+
+Akses:
 
 ```text
-http://localhost/karun-gumbal
+http://localhost:8000
 ```
 
 ---
 
-## 👷‍♂️ Pembagian Tugas
+## 🔒 Keamanan
 
-### UI/UX Designer
-
-* Membuat wireframe dan desain antarmuka menggunakan Figma.
-
-### Frontend Developer
-
-* Mengimplementasikan desain menjadi halaman web menggunakan HTML, CSS, dan JavaScript.
-
-### Backend Developer
-
-* Membuat database MySQL.
-* Implementasi Session Login.
-* Implementasi CRUD.
-* Integrasi database dengan PHP Native.
-* Implementasi Function dan validasi data.
+* Password menggunakan password_hash()
+* Login menggunakan Session PHP
+* Prepared Statement PDO
+* Validasi Client-side dan Server-side
+* Proteksi halaman Admin
+* Sanitasi output menggunakan htmlspecialchars()
 
 ---
 
-## 📌 Fitur yang Memenuhi Ketentuan Responsi
+## 📋 Fitur yang Memenuhi Ketentuan Responsi
 
 ✅ Login & Registrasi
 
@@ -265,17 +282,17 @@ http://localhost/karun-gumbal
 
 ✅ Minimal 2 Role (Admin & User)
 
-✅ Minimal 3 Tabel Database (selain User)
+✅ Minimal 3 Tabel Database (Selain User)
 
 ✅ Implementasi CRUD
 
 ✅ Implementasi Function PHP
 
-✅ Website Dinamis
+✅ Validasi Form
 
-✅ Menggunakan GitHub
+✅ GitHub Repository
 
-✅ Menggunakan Figma
+✅ Figma Design
 
 ✅ Hosting Website
 
@@ -283,6 +300,10 @@ http://localhost/karun-gumbal
 
 ## 👨‍💻 Kontributor
 
-* Fathah Ikhwansyah - H1H024063 — Backend Developer
-* Muhammad Aziz Ihza Fahriza Salam - H1H024050 — Frontend Developer
-* Mohammad Zulfan Ramadhan - H1H024008 — UI/UX Designer
+| Nama              | Role               |Nim               |              
+| ----------------- | ------------------ |------------------|
+| Fathah Ikhwansyah | Backend Developer  |H1H024063         |
+| Muhammad Aziz Ihza Fahriza Salam | Frontend Developer |H1H024050         |
+| Mohammad Zulfan Ramadhan | UI/UX Designer     |H1H024008         |
+
+---
