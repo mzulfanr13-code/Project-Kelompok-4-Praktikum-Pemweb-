@@ -209,7 +209,7 @@ Menyimpan laporan yang dikirim oleh pengguna.
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/username/gumbal-information-system.git
+git clone https://github.com/username/gumbal.git
 ```
 
 ### 2. Pindahkan Project
