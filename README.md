@@ -1,8 +1,8 @@
-# 🕯️ Karun Gumbal
+# The Amazing World of Gumball Theme
 
 ## 🕯️ Deskripsi Aplikasi
 
-Karun Gumbal adalah aplikasi web berbasis PHP Native yang bertemakan mitologi, misteri, dan benda pusaka nusantara. Website ini memungkinkan pengguna untuk menjelajahi informasi mengenai karun (harta atau pusaka mistis), gumbal (media ritual), serta melaporkan temuan atau lokasi yang berkaitan dengan legenda tersebut.
+The Amazing World of Gumball Theme adalah aplikasi web berbasis PHP Native yang bertemakan mitologi, misteri, dan benda pusaka nusantara. Website ini memungkinkan pengguna untuk menjelajahi informasi mengenai karun (harta atau pusaka mistis), gumbal (media ritual), serta melaporkan temuan atau lokasi yang berkaitan dengan legenda tersebut.
 
 Proyek ini dibuat untuk memenuhi tugas Responsi Praktikum Pemrograman Web dengan menerapkan konsep HTML, CSS, JavaScript, PHP Native, Session, CRUD, dan MySQL.
 
