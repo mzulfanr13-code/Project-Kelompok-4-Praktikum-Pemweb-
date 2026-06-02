@@ -73,7 +73,61 @@ Proyek ini dibuat untuk memenuhi tugas Responsi Praktikum Pemrograman Web dengan
 ## 📂 Struktur Folder
 
 ```text
-/ │ ├── database/ │ ├── schema.sql │ └── seed.sql │ ├── assets/ │ ├── css/ │ ├── js/ │ └── images/ │ ├── includes/ │ ├── config.php │ ├── functions.php │ ├── session.php │ ├── header.php │ └── footer.php │ ├── pages/ │ ├── login.php │ ├── register.php │ ├── dashboard.php │ ├── karun.php │ ├── karun-detail.php │ ├── gumbal.php │ ├── gumbal-detail.php │ ├── laporan.php │ ├── profile.php │ └── logout.php │ ├── admin/ │ ├── dashboard.php │ ├── manage-karun.php │ ├── manage-gumbal.php │ ├── manage-laporan.php │ └── manage-users.php │ ├── index.php ├── README.md └── .gitignore
+root/
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css              # Global styles
+│   │   ├── admin.css              # Admin styles
+│   │   └── auth.css               # Login & register styles
+│   │
+│   ├── js/
+│   │   ├── main.js                # Global JavaScript
+│   │   └── validation.js          # Form validation
+│   │
+│   └── images/
+│       ├── karun/                 # Gambar karun/pusaka
+│       ├── gumbal/                # Gambar gumbal
+│       └── ui/                    # Logo, icon, banner
+│
+├── includes/
+│   ├── config.php                # Database connection
+│   ├── functions.php             # Reusable functions
+│   ├── session.php               # Session & role guard
+│   ├── header.php                # Shared header
+│   └── footer.php                # Shared footer
+│
+├── pages/
+│   ├── login.php                 # Login page
+│   ├── register.php              # Register page
+│   ├── dashboard.php             # User dashboard
+│   ├── karun.php                 # List karun
+│   ├── karun-detail.php          # Detail karun
+│   ├── gumbal.php                # List gumbal
+│   ├── gumbal-detail.php         # Detail gumbal
+│   ├── laporan.php               # Submit laporan
+│   ├── profile.php               # User profile
+│   └── logout.php                # Logout process
+│
+├── admin/
+│   ├── dashboard.php             # Admin dashboard
+│   ├── manage-karun.php          # CRUD karun
+│   ├── manage-gumbal.php         # CRUD gumbal
+│   ├── manage-laporan.php        # Approve/reject laporan
+│   └── manage-users.php          # User management
+│
+├── database/
+│   ├── schema.sql                # Database structure
+│   └── seed.sql                  # Sample data
+│
+├── uploads/
+│   ├── karun/                    # Uploaded karun images
+│   └── gumbal/                   # Uploaded gumbal images
+│
+├── index.php                     # Landing page
+├── README.md
+├── .gitignore
+└── config.example.php            # Example configuration
 ```
 
 ---
