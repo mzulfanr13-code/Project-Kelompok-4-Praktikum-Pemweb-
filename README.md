@@ -73,38 +73,7 @@ Proyek ini dibuat untuk memenuhi tugas Responsi Praktikum Pemrograman Web dengan
 ## 📂 Struktur Folder
 
 ```text
-/ (Root Directory)
-│
-├── db/                     # Backup database (.sql)
-│
-├── html_awal/              # Prototype HTML awal
-│
-└── main/
-    │
-    ├── admin/
-    │   ├── dashboard.php
-    │   ├── karun.php
-    │   ├── gumbal.php
-    │   ├── laporan.php
-    │   └── user.php
-    │
-    ├── assets/
-    │   ├── css/
-    │   ├── js/
-    │   └── image/
-    │
-    ├── config/
-    │   ├── conn.php
-    │   └── function.php
-    │
-    ├── dashboard.php
-    ├── karun.php
-    ├── gumbal.php
-    ├── laporan.php
-    ├── login.php
-    ├── logout.php
-    ├── register.php
-    └── index.php
+/ │ ├── database/ │ ├── schema.sql │ └── seed.sql │ ├── assets/ │ ├── css/ │ ├── js/ │ └── images/ │ ├── includes/ │ ├── config.php │ ├── functions.php │ ├── session.php │ ├── header.php │ └── footer.php │ ├── pages/ │ ├── login.php │ ├── register.php │ ├── dashboard.php │ ├── karun.php │ ├── karun-detail.php │ ├── gumbal.php │ ├── gumbal-detail.php │ ├── laporan.php │ ├── profile.php │ └── logout.php │ ├── admin/ │ ├── dashboard.php │ ├── manage-karun.php │ ├── manage-gumbal.php │ ├── manage-laporan.php │ └── manage-users.php │ ├── index.php ├── README.md └── .gitignore
 ```
 
 ---
