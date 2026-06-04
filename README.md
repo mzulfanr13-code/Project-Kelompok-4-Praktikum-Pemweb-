@@ -78,61 +78,45 @@ Website ini dikembangkan sebagai proyek Responsi Praktikum Pemrograman Web denga
 ## 📂 Struktur Folder
 
 ```text
-root/
+gumball_portal/
+├── includes/              # Komponen backend & template
+│   ├── config.php         # Koneksi DB + BASE_URL
+│   ├── session.php        # Guard: require_login(), require_admin()
+│   ├── functions.php      # db_query(), helpers, require_role()
+│   ├── header.php         # Header frontend (FE)
+│   └── footer.php         # Footer FE
 │
-├── assets/
-│   ├── css/
-│   │   ├── style.css
-│   │   ├── admin.css
-│   │   └── auth.css
-│   │
-│   ├── js/
-│   │   ├── main.js
-│   │   └── validation.js
-│   │
-│   └── images/
-│       ├── gumbal/
-│       ├── ritual/
-│       └── ui/
-│
-├── includes/
-│   ├── config.php
-│   ├── functions.php
-│   ├── session.php
-│   ├── header.php
-│   └── footer.php
-│
-├── pages/
+├── pages/                 # Halaman autentikasi & detail publik
 │   ├── login.php
 │   ├── register.php
-│   ├── dashboard.php
-│   ├── gumbal.php
-│   ├── gumbal-detail.php
-│   ├── ritual.php
-│   ├── ritual-detail.php
-│   ├── laporan.php
-│   ├── profile.php
-│   └── logout.php
+│   ├── logout.php
+│   ├── character-detail.php
+│   └── episode-detail.php
 │
-├── admin/
+├── admin/                 # Panel admin (akses terbatas)
+│   ├── admin-sidebar.php
 │   ├── dashboard.php
-│   ├── manage-gumbal.php
-│   ├── manage-ritual.php
-│   ├── manage-laporan.php
-│   └── manage-users.php
+│   ├── manage-characters.php   # CRUD karakter
+│   ├── manage-episodes.php     # CRUD episode
+│   ├── manage-users.php        # Kelola user
+│   └── manage-quotes.php       # Approve/reject quotes
+│
+├── assets/                # Aset statis
+│   ├── css/
+│   │   ├── style.css      # Frontend style
+│   │   └── admin.css      # Admin panel style
+│   ├── js/
+│   │   ├── main.js        # Flash message, confirm delete
+│   │   └── validation.js  # Validasi form
+│   └── images/            # Gambar (karakter, episode, dll)
 │
 ├── database/
-│   ├── schema.sql
-│   └── seed.sql
+│   └── schema.sql         # Struktur tabel + data awal (seed)
 │
-├── uploads/
-│   ├── gumbal/
-│   └── ritual/
-│
-├── index.php
-├── README.md
-├── .gitignore
-└── config.example.php
+├── index.php              # Landing page
+├── characters.php         # Daftar karakter publik
+├── episodes.php           # Daftar episode publik
+└── README.md              # File ini
 ```
 
 ---
