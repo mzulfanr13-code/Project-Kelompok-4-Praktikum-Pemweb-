@@ -262,9 +262,4 @@ Ikon antarmuka menggunakan Font Awesome 6 Free yang dimuat melalui CDN Cloudflar
 
 ---
 
-## Catatan Tambahan
-
-- Proyek ini bersifat fan-made dan tidak berafiliasi dengan Cartoon Network maupun pencipta serial.
-- Tidak ada mekanisme upload gambar karakter; URL gambar disimpan sebagai path teks relatif di kolom `image_url`.
-- Tidak ada fitur pencarian atau pagination pada versi ini.
-- File CSS ditulis tanpa preprocessor dan tanpa framework seperti Bootstrap atau Tailwind.
+## Link Deploy : https://gumball-fansite.freedev.app/index.php
