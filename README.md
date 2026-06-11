@@ -1,293 +1,270 @@
-# The Amazing World of Gumball Theme
+# The Amazing World of Gumball Fan Site
 
-## 📖 Deskripsi Aplikasi
-
-The Amazing World of Gumball Theme adalah website berbasis PHP Native yang berfungsi sebagai platform informasi dan dokumentasi mengenai Gumbal, ritual, artefak mistis, serta laporan masyarakat terkait penemuan atau legenda yang berhubungan dengannya.
-
-Website ini dikembangkan sebagai proyek Responsi Praktikum Pemrograman Web dengan menerapkan HTML, CSS, JavaScript, PHP Native, Session, CRUD, dan MySQL.
+Fan site tidak resmi berbasis web untuk serial animasi *The Amazing World of Gumball* karya Ben Bocquelet. Aplikasi ini dibangun dengan PHP murni dan MySQL, menyediakan ensiklopedi karakter, panduan episode, serta sistem pengiriman dan moderasi quote dari para karakter serial tersebut.
 
 ---
 
-## ✨ Fitur Utama
+## Daftar Isi
 
-### 👤 Halaman User
-
-#### 🔐 Registrasi & Login
-
-* Membuat akun baru.
-* Login menggunakan akun yang telah terdaftar.
-* Logout dari sistem.
-
-#### 🏠 Dashboard User
-
-* Menampilkan informasi singkat website.
-* Navigasi menuju seluruh fitur utama.
-
-#### 🕯️ Data Gumbal
-
-* Melihat daftar Gumbal.
-* Melihat detail Gumbal.
-* Mencari Gumbal berdasarkan nama atau kategori.
-
-#### 📜 Ritual & Legenda
-
-* Melihat informasi ritual dan legenda yang berkaitan dengan Gumbal.
-* Menampilkan deskripsi dan sejarah singkat.
-
-#### 📝 Laporan Temuan
-
-* Mengirim laporan terkait Gumbal.
-* Melihat status laporan yang telah dikirim.
+- [Gambaran Umum](#gambaran-umum)
+- [Fitur](#fitur)
+- [Teknologi yang Digunakan](#teknologi-yang-digunakan)
+- [Struktur Direktori](#struktur-direktori)
+- [Skema Database](#skema-database)
+- [Sistem Autentikasi dan Peran](#sistem-autentikasi-dan-peran)
+- [Modul Aplikasi](#modul-aplikasi)
+- [Cara Instalasi](#cara-instalasi)
+- [Akun Default](#akun-default)
+- [Desain dan Antarmuka](#desain-dan-antarmuka)
+- [Catatan Tambahan](#catatan-tambahan)
 
 ---
 
-### 🛡️ Halaman Admin
+## Gambaran Umum
 
-#### 📊 Dashboard Admin
+Aplikasi ini adalah fan portal multi-halaman yang memungkinkan pengguna terdaftar untuk menelusuri data karakter dan episode, serta mengirimkan quote favorit mereka. Admin memiliki kendali penuh atas konten melalui operasi CRUD dan sistem moderasi quote.
 
-* Menampilkan statistik website.
-* Jumlah user, data Gumbal, ritual, dan laporan.
-
-#### ⚙️ Manajemen Gumbal
-
-* Menambah data Gumbal.
-* Mengedit data Gumbal.
-* Menghapus data Gumbal.
-* Melihat seluruh data Gumbal.
-
-#### 📜 Manajemen Ritual
-
-* Menambah data ritual.
-* Mengedit data ritual.
-* Menghapus data ritual.
-
-#### 📄 Manajemen Laporan
-
-* Melihat laporan pengguna.
-* Menyetujui laporan.
-* Menolak laporan.
-* Menghapus laporan.
-
-#### 👥 Manajemen User
-
-* Melihat daftar pengguna.
-* Menghapus akun pengguna.
+Proyek ini berjalan di atas server lokal (direkomendasikan: Laragon dengan PHP 8 dan MySQL) dan tidak bergantung pada framework PHP maupun CSS apapun.
 
 ---
 
-## 📂 Struktur Folder
+## Fitur
 
-```text
-gumball_portal/
-├── includes/              # Komponen backend & template
-│   ├── config.php         # Koneksi DB + BASE_URL
-│   ├── session.php        # Guard: require_login(), require_admin()
-│   ├── functions.php      # db_query(), helpers, require_role()
-│   ├── header.php         # Header frontend (FE)
-│   └── footer.php         # Footer FE
-│
-├── pages/                 # Halaman autentikasi & detail publik
-│   ├── login.php
-│   ├── register.php
-│   ├── logout.php
-│   ├── character-detail.php
-│   └── episode-detail.php
-│
-├── admin/                 # Panel admin (akses terbatas)
-│   ├── admin-sidebar.php
-│   ├── dashboard.php
-│   ├── manage-characters.php   # CRUD karakter
-│   ├── manage-episodes.php     # CRUD episode
-│   ├── manage-users.php        # Kelola user
-│   └── manage-quotes.php       # Approve/reject quotes
-│
-├── assets/                # Aset statis
+**Untuk semua pengunjung:**
+- Halaman beranda bertema hero dengan latar belakang bergambar dan deskripsi singkat serial
+- Ensiklopedi karakter — menampilkan semua karakter dalam bentuk grid kartu beserta foto, nama, spesies, dan halaman detail
+- Panduan episode — daftar episode dikelompokkan per season dengan badge format `S01E01`
+- Quotes Wall — kumpulan quote yang telah disetujui admin, beserta informasi karakter, episode, dan pengirim
+
+**Untuk pengguna terdaftar:**
+- Registrasi akun baru dengan validasi input dan pengecekan duplikasi email
+- Login dan logout berbasis sesi PHP
+- Halaman profil pribadi: informasi akun, statistik quote (total, approved, pending), dan daftar 5 quote terbaru
+- Pengiriman quote baru dengan pemilihan karakter dan episode, serta batas 500 karakter
+- Quote yang dikirim user biasa akan berstatus `pending` hingga disetujui admin
+
+**Untuk admin:**
+- Semua fitur pengguna biasa, dengan quote yang dikirim langsung berstatus `approved`
+- CRUD penuh untuk karakter: tambah, lihat detail, edit, dan hapus
+- CRUD penuh untuk episode: tambah, lihat detail, edit, dan hapus
+- Moderasi quote: approve, reject, edit, dan hapus; dengan tab filter (Approved / Pending / Rejected / Semua)
+
+---
+
+## Teknologi yang Digunakan
+
+| Komponen       | Detail                                      |
+|----------------|---------------------------------------------|
+| Backend        | PHP 8 (vanilla, tanpa framework)            |
+| Database       | MySQL dengan koneksi PDO                    |
+| Frontend       | HTML5, CSS3 (vanilla, tanpa framework)      |
+| Tipografi      | Google Fonts — Fredoka One, Nunito          |
+| Ikon           | Font Awesome 6 Free (via CDN)               |
+| Server Lokal   | Laragon (Apache + MySQL) — direkomendasikan |
+
+---
+
+## Struktur Direktori
+
+```
+gumball/
+├── assets/
 │   ├── css/
-│   │   ├── style.css      # Frontend style
-│   │   └── admin.css      # Admin panel style
-│   ├── js/
-│   │   ├── main.js        # Flash message, confirm delete
-│   │   └── validation.js  # Validasi form
-│   └── images/            # Gambar (karakter, episode, dll)
-│
+│   │   └── style.css          # Stylesheet utama
+│   └── images/
+│       ├── tawog-logo.png
+│       ├── bg-home.jpg
+│       ├── bg-login.jpg
+│       ├── gumball.png
+│       ├── darwin.png
+│       ├── anais.png
+│       ├── richard.png
+│       └── nicole.png
+├── characters/
+│   ├── index.php              # Grid semua karakter
+│   ├── detail.php             # Halaman detail karakter
+│   ├── create.php             # Form tambah karakter (admin)
+│   ├── edit.php               # Form edit karakter (admin)
+│   └── delete.php             # Hapus karakter (admin)
+├── episodes/
+│   ├── index.php              # Daftar episode per season
+│   ├── detail.php             # Halaman detail episode
+│   ├── create.php             # Form tambah episode (admin)
+│   ├── edit.php               # Form edit episode (admin)
+│   └── delete.php             # Hapus episode (admin)
+├── quotes/
+│   ├── index.php              # Quotes Wall dengan filter
+│   ├── create.php             # Form submit quote (login diperlukan)
+│   ├── edit.php               # Edit quote (admin)
+│   ├── approve.php            # Approve quote (admin)
+│   ├── reject.php             # Reject quote (admin)
+│   └── delete.php             # Hapus quote (admin)
+├── config/
+│   └── db.php                 # Konfigurasi koneksi PDO ke MySQL
 ├── database/
-│   └── schema.sql         # Struktur tabel + data awal (seed)
-│
-├── index.php              # Landing page
-├── characters.php         # Daftar karakter publik
-├── episodes.php           # Daftar episode publik
-└── README.md              # File ini
+│   └── schema.sql             # DDL tabel dan data awal (seed)
+├── includes/
+│   ├── header.php             # DOCTYPE, head, navbar
+│   ├── footer.php             # Tag penutup dan copyright
+│   └── session.php            # Fungsi sesi: require_login, require_admin, is_logged_in, is_admin
+├── index.php                  # Halaman beranda (hero section)
+├── login.php                  # Halaman login
+├── register.php               # Halaman registrasi
+├── logout.php                 # Hapus sesi dan redirect ke login
+└── profile.php                # Halaman profil pengguna
 ```
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## Skema Database
 
-### UI/UX Design
+Database bernama `gumball_db` terdiri dari empat tabel:
 
-* Figma
+### Tabel `users`
 
-### Frontend
+| Kolom        | Tipe                        | Keterangan                      |
+|--------------|-----------------------------|---------------------------------|
+| `id`         | INT AUTO_INCREMENT PK       |                                 |
+| `username`   | VARCHAR(50) NOT NULL        |                                 |
+| `email`      | VARCHAR(100) UNIQUE NOT NULL|                                 |
+| `password`   | VARCHAR(255) NOT NULL       | Di-hash dengan `PASSWORD_BCRYPT`|
+| `role`       | ENUM('admin','user')        | Default: `user`                 |
+| `created_at` | TIMESTAMP                   | Default: waktu saat ini         |
 
-* HTML5
-* CSS3
-* JavaScript
+### Tabel `characters`
 
-### Backend
+| Kolom              | Tipe             | Keterangan                        |
+|--------------------|------------------|-----------------------------------|
+| `id`               | INT PK           |                                   |
+| `name`             | VARCHAR(100)     |                                   |
+| `species`          | VARCHAR(100)     |                                   |
+| `description`      | TEXT             |                                   |
+| `image_url`        | VARCHAR(255)     | Path relatif ke folder `assets/`  |
+| `first_appearance` | VARCHAR(100)     | Judul episode kemunculan pertama  |
+| `created_at`       | TIMESTAMP        |                                   |
 
-* PHP Native
+### Tabel `episodes`
 
-### Database
+| Kolom            | Tipe         | Keterangan |
+|------------------|--------------|------------|
+| `id`             | INT PK       |            |
+| `title`          | VARCHAR(150) |            |
+| `season`         | INT          |            |
+| `episode_number` | INT          |            |
+| `synopsis`       | TEXT         |            |
+| `air_date`       | DATE         |            |
+| `created_at`     | TIMESTAMP    |            |
 
-* MySQL
+### Tabel `quotes`
 
-### Version Control
+| Kolom          | Tipe                                  | Keterangan                                            |
+|----------------|---------------------------------------|-------------------------------------------------------|
+| `id`           | INT PK                                |                                                       |
+| `character_id` | INT FK -> `characters(id)`            | CASCADE on delete                                     |
+| `episode_id`   | INT FK -> `episodes(id)`              | CASCADE on delete                                     |
+| `submitted_by` | INT FK -> `users(id)`                 | CASCADE on delete                                     |
+| `content`      | TEXT                                  | Maksimal 500 karakter (diterapkan di sisi aplikasi)   |
+| `status`       | ENUM('pending','approved','rejected') | Default: `pending`                                    |
+| `created_at`   | TIMESTAMP                             |                                                       |
 
-* GitHub
-
----
-
-## 🗄️ Database
-
-### users
-
-Menyimpan data akun pengguna dan administrator.
-
-### gumbal
-
-Menyimpan informasi mengenai Gumbal.
-
-### ritual
-
-Menyimpan informasi ritual atau legenda.
-
-### laporan
-
-Menyimpan laporan yang dikirim oleh pengguna.
-
----
-
-## 👥 Role Pengguna
-
-### Admin
-
-* CRUD Gumbal
-* CRUD Ritual
-* Kelola Laporan
-* Kelola User
-* Dashboard Statistik
-
-### User
-
-* Registrasi
-* Login
-* Melihat Data Gumbal
-* Melihat Data Ritual
-* Mengirim Laporan
-* Melihat Profil
+Relasi antar tabel bersifat `ON DELETE CASCADE`, artinya penghapusan karakter, episode, atau pengguna akan secara otomatis menghapus quote terkait.
 
 ---
 
-## 🚀 Cara Instalasi
+## Sistem Autentikasi dan Peran
 
-### 1. Clone Repository
+Autentikasi dikelola melalui sesi PHP yang diinisialisasi di `includes/session.php`. File ini menyediakan empat fungsi utama:
 
-```bash
-git clone https://github.com/username/gumbal.git
-```
+- `is_logged_in()` — mengembalikan `true` jika `$_SESSION['user_id']` terdefinisi
+- `is_admin()` — mengembalikan `true` jika role sesi adalah `admin`
+- `require_login()` — redirect ke `login.php` bila pengguna belum login
+- `require_admin()` — memanggil `require_login()` terlebih dahulu, kemudian redirect ke `index.php` bila role bukan admin
 
-### 2. Pindahkan Project
+Setiap halaman yang memerlukan autentikasi memanggil salah satu dari dua fungsi tersebut di baris paling awal. Password disimpan dalam bentuk hash menggunakan `password_hash()` dengan algoritma `PASSWORD_BCRYPT` dan diverifikasi dengan `password_verify()`.
 
-Salin folder proyek ke dalam folder:
-
-```text
-htdocs/
-```
-
-### 3. Buat Database
-
-```sql
-CREATE DATABASE gumbal_db;
-```
-
-### 4. Import Database
-
-Import file:
-
-```text
-database/schema.sql
-```
-
-dan
-
-```text
-database/seed.sql
-```
-
-### 5. Konfigurasi Database
-
-```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'gumbal_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-```
-
-### 6. Jalankan Website
-
-```bash
-php -S localhost:8000
-```
-
-Akses:
-
-```text
-http://localhost:8000
-```
+Logout dilakukan di `logout.php` dengan memanggil `session_unset()` dan `session_destroy()` sebelum melakukan redirect ke halaman login.
 
 ---
 
-## 🔒 Keamanan
+## Modul Aplikasi
 
-* Password menggunakan password_hash()
-* Login menggunakan Session PHP
-* Prepared Statement PDO
-* Validasi Client-side dan Server-side
-* Proteksi halaman Admin
-* Sanitasi output menggunakan htmlspecialchars()
+### Beranda (`index.php`)
 
----
+Menampilkan halaman hero bertema dengan latar belakang gambar (`bg-home.jpg`), logo serial, judul sambutan, dan paragraf deskripsi singkat. Tidak memerlukan login.
 
-## 📋 Fitur yang Memenuhi Ketentuan Responsi
+### Karakter (`characters/`)
 
-✅ Login & Registrasi
+Halaman indeks menampilkan semua karakter dalam grid kartu yang dapat diklik. Setiap kartu menampilkan foto dan nama karakter. Admin melihat tombol tambah karakter (`+`) di pojok grid.
 
-✅ Session PHP
+Halaman detail menampilkan foto besar, spesies, episode kemunculan pertama, tanggal ditambahkan, dan deskripsi. Admin melihat tombol edit dan hapus di halaman detail.
 
-✅ Minimal 2 Role (Admin & User)
+Penghapusan karakter dilakukan melalui `delete.php` yang menerima parameter `id` via GET, mengambil nama karakter untuk pesan konfirmasi flash, lalu mengeksekusi `DELETE` dan redirect ke indeks.
 
-✅ Minimal 3 Tabel Database (Selain User)
+### Episode (`episodes/`)
 
-✅ Implementasi CRUD
+Indeks episode mengelompokkan semua episode berdasarkan season menggunakan array `$byseason`. Setiap episode ditampilkan dalam kartu berisi badge season-episode, judul, tanggal tayang, dan cuplikan sinopsis (dipotong 100 karakter).
 
-✅ Implementasi Function PHP
+### Quotes (`quotes/`)
 
-✅ Validasi Form
+Halaman indeks default hanya menampilkan quote berstatus `approved`. Admin melihat tab filter tambahan untuk status `pending`, `rejected`, dan `all`. Setiap quote menampilkan isi kutipan, nama karakter, judul episode, dan pengirim.
 
-✅ GitHub Repository
+Saat pengguna biasa mengirim quote, status diset ke `pending`. Saat admin yang mengirim, status langsung `approved`. Formulir pengiriman memiliki penghitung karakter secara real-time yang berubah warna merah saat mendekati batas 500 karakter.
 
-✅ Figma Design
+### Profil (`profile.php`)
 
-✅ Hosting Website
+Menampilkan informasi akun (ID, username, email, role, tanggal bergabung) dan statistik quote (total, approved, pending). Bagian bawah menampilkan 5 quote terbaru pengguna dengan status masing-masing. Halaman ini hanya dapat diakses oleh pengguna yang sudah login.
 
 ---
 
-## 👨‍💻 Kontributor
+## Cara Instalasi
 
-| Nama              | Role               |Nim               |              
-| ----------------- | ------------------ |------------------|
-| Fathah Ikhwansyah | Backend Developer  |H1H024063         |
-| Muhammad Aziz Ihza Fahriza Salam | Frontend Developer |H1H024050         |
-| Mohammad Zulfan Ramadhan | UI/UX Designer     |H1H024008         |
+**Prasyarat:** PHP 8.x, MySQL 5.7 atau lebih baru, Apache dengan `mod_rewrite` aktif (Laragon direkomendasikan untuk pengembangan lokal di Windows).
+
+1. Salin seluruh folder proyek ke dalam direktori web root. Dengan Laragon, letakkan di dalam `C:/laragon/www/`, misalnya sebagai `C:/laragon/www/gumball/`.
+
+2. Buat database baru dengan nama `gumball_db` melalui phpMyAdmin atau klien MySQL.
+
+3. Import file `database/schema.sql` ke database tersebut. File ini akan membuat semua tabel dan mengisi data awal (karakter, episode, quote, serta dua akun pengguna).
+
+4. Sesuaikan konfigurasi koneksi di `config/db.php` bila nama database, username, atau password MySQL berbeda dari nilai default:
+
+   ```php
+   $host   = "localhost";
+   $dbname = "gumball_db";
+   $user   = "root";
+   $pass   = "";
+   ```
+
+5. Akses aplikasi melalui browser di `http://localhost/gumball/` atau sesuai nama folder yang digunakan.
 
 ---
+
+## Akun Default
+
+Dua akun berikut tersedia setelah menjalankan `schema.sql`:
+
+| Role  | Username | Password  | Email               |
+|-------|----------|-----------|---------------------|
+| Admin | admin    | admin123  | admin@gumball.com   |
+| User  | user     | user123   | user@gmail.com      |
+
+Disarankan untuk mengubah password akun admin setelah instalasi pertama.
+
+---
+
+## Desain dan Antarmuka
+
+Antarmuka menggunakan dua tipografi dari Google Fonts: **Fredoka One** untuk judul dan elemen display, serta **Nunito** untuk teks isi. Palet warna utama bertema biru cerah (`#4EA8DE`) dengan aksen kuning (`#F4A529`) yang mengacu pada estetika visual serial Gumball.
+
+Semua komponen UI (kartu karakter, kartu episode, kartu quote, formulir, navbar, profil) didefinisikan dalam satu file stylesheet (`assets/css/style.css`, 975 baris) dengan variabel CSS untuk konsistensi warna, radius, bayangan, dan transisi di seluruh halaman.
+
+Ikon antarmuka menggunakan Font Awesome 6 Free yang dimuat melalui CDN Cloudflare.
+
+---
+
+## Catatan Tambahan
+
+- Proyek ini bersifat fan-made dan tidak berafiliasi dengan Cartoon Network maupun pencipta serial.
+- Tidak ada mekanisme upload gambar karakter; URL gambar disimpan sebagai path teks relatif di kolom `image_url`.
+- Tidak ada fitur pencarian atau pagination pada versi ini.
+- File CSS ditulis tanpa preprocessor dan tanpa framework seperti Bootstrap atau Tailwind.
