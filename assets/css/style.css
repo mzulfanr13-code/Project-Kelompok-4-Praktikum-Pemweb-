@@ -232,9 +232,21 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 .form-error { color: var(--color-danger); font-size: .82rem; margin-top: .3rem; }
 
 /* --- 8. CARDS (generic) --- */
-.card       { background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; }
-.card-body  { padding: 1.4rem; }
-.card-title { font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: .5rem; color: var(--color-dark); }
+.card       { 
+    background: #fff; 
+    border-radius: var(--radius-md); 
+    box-shadow: var(--shadow-sm); 
+    overflow: hidden; 
+}
+.card-body  { 
+    padding: 1.4rem; 
+}
+.card-title { 
+    font-family: var(--font-heading); 
+    font-size: 1.1rem; 
+    margin-bottom: .5rem; 
+    color: var(--color-dark); 
+}
 
 /* --- 9. PAGE WRAPPER --- */
 .page-wrapper {

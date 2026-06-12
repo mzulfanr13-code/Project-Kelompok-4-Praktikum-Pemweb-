@@ -56,7 +56,7 @@ $homeActive = (
             <a href="/profile.php"<?= nav_active('profile', $uri) ?>>PROFILE</a>
 
             <?php if (is_admin()): ?>
-                <a href="/admin/dashboard.php"<?= nav_active('admin', $uri) ?>>ADMIN</a>
+                <a>ADMIN</a>
             <?php endif; ?>
 
             <a href="/logout.php" class="nav-logout">
